@@ -124,28 +124,29 @@ var passwordCharacterGenerator = function (lengthOfPassword){
   var passwordCharacters = [];
   var passwordRules = [passwordCriteria.passLowerCase[1],passwordCriteria.passUpperCase[1],passwordCriteria.passNumericChar[1],passwordCriteria.passSpecialChar[1]];
 
-  var alphaCharacter = function ()
-  {
-    var arrayOfAlphaCharacters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+      var alphaCharacter = function ()
+      {
+        var arrayOfAlphaCharacters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
-    return arrayOfAlphaCharacters[Math.max(0,Math.floor(arrayOfAlphaCharacters.length * (Math.random()*1))-1)];
-  }
+        return arrayOfAlphaCharacters[Math.max(0,Math.floor(arrayOfAlphaCharacters.length * (Math.random()*1))-1)];
+      }
 
-  var numericCharacter = function ()
-  {
-    return (Math.min(0,Math.floor(9 * Math.random())-1));
-  }
+      var numericCharacter = function ()
+      {
+        return (Math.min(0,Math.floor(9 * Math.random())-1));
+      }
 
-  var specialCharacters = function ()
-  {
-    var arrayOfSpecialCharacters = ['!','"','#','$','%','&','\'','(',')','*','+',',','-','.',':',';','=','<','>','?','[',']','^','_','`','{','}','|','~'];
+      var specialCharacters = function ()
+      {
+        var arrayOfSpecialCharacters = ['!','"','#','$','%','&','\'','(',')','*','+',',','-','.',':',';','=','<','>','?','[',']','^','_','`','{','}','|','~'];
 
-    return arrayOfSpecialCharacters[Math.max(0,Math.floor(arrayOfSpecialCharacters.length * Math.random())-1)];
-  }
+        return arrayOfSpecialCharacters[Math.max(0,Math.floor(arrayOfSpecialCharacters.length * Math.random())-1)];
+      }
 
   for (var x = 0; x <= lengthOfPassword; x++)
   {
-    var y = (3*Math.random());
+    var y = (Math.max(0,Math.floor(3*Math.random())-1));
+    
     while (passwordRules[y] === false)
     {
       y *= (3*Math.random());
@@ -173,6 +174,7 @@ var passwordCharacterGenerator = function (lengthOfPassword){
   console.log(passwordCriteria);
   console.log(passwordRules);
   console.log(passwordCharacters);
+  return passwordCharacters;
 }
 
 var generatePassword = function (){
