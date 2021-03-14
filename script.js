@@ -10,8 +10,7 @@ var passwordLength = function()
   window.alert("You have not entered a value, please select a numeric value between 8 and 128");
     if(window.confirm("Do you wish to cancel?"))
     {
-      userStaysOrGoes = false;
-      break;
+      return 0;
     };
     userStaysOrGoes = true;
     passwordLength();
@@ -23,19 +22,13 @@ var passwordLength = function()
     window.alert("You have not entered a numeric value between 8 and 128");
       if(window.confirm("Do you wish to cancel?"))
       {
-        userStaysOrGoes = false;
-        break;
+        return 0;
       };
       userStaysOrGoes = true;
       passwordLength();
     }
 
-    if (userStaysOrGoes === false)
-    {
-      return 0;
-    }
-
-    return lengthNum;
+    return Math.floor(lengthNum);
 }
 
 // var passwordLength =
@@ -45,7 +38,7 @@ var passwordLength = function()
 
 var generatePassword = function (){
   window.alert("Password Criteria: \n 1) Length with range of 8 to 128 characters \n 2) Lowercase \n 3) Uppercase \n 4) Numeric \n 5) Special characters ");
-  console.log(passwordLength()+" "+typeof(passwordLength()));
+  console.log(passwordLength());
 }
 
 // Get references to the #generate element
