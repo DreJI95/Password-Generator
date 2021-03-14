@@ -27,7 +27,8 @@ This application will allow an employee generate a random password based on thei
 - THEN the password is either displayed in an alert or written to the page
 
 **References:** 
-Password Special Characters - https://owasp.org/www-community/password-special-characters
+Password cpecial characters: https://owasp.org/www-community/password-special-characters
+Escaping special characters: https://javascript.info/regexp-escaping
 
 **Live webpage link:**
 
