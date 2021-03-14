@@ -1,27 +1,41 @@
 // Assignment code here
 var userEntryLength;
+var userStaysOrGoes; //checks if user wishes to continue or not; If not return password length as undefined.
 
 var passwordLength = function()
 {
-  userEntryLength = window.prompt("Enter a number for the password length between 8 and 128 characters");
+  userEntryOfLength = window.prompt("Enter a number for the password length between 8 and 128 characters");
 
- while (!userEntryLength){
+ while (!userEntryOfLength){
   window.alert("You have not entered a value, please select a numeric value between 8 and 128");
     if(window.confirm("Do you wish to cancel?"))
     {
+      userStaysOrGoes = false;
       break;
     };
+    userStaysOrGoes = true;
     passwordLength();
   }
-  return userEntryLength;
 
+  lengthNum = parseInt(userEntryOfLength);
 
-  // if (userEntryLength >= 8 && userEntryLength <= 128){
-  //   return userEntryLength;
-  // }
-  // else{
-  //   window.alert("You have not enter a number, please select a numeric value between 8 and 128");
-  // }
+  while (isNaN(lengthNum) === true || lengthNum < 8 || lengthNum > 128){
+    window.alert("You have not entered a numeric value between 8 and 128");
+      if(window.confirm("Do you wish to cancel?"))
+      {
+        userStaysOrGoes = false;
+        break;
+      };
+      userStaysOrGoes = true;
+      passwordLength();
+    }
+
+    if (userStaysOrGoes === false)
+    {
+      return 0;
+    }
+
+    return lengthNum;
 }
 
 // var passwordLength =

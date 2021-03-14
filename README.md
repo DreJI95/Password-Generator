@@ -31,6 +31,7 @@ Password cpecial characters: https://owasp.org/www-community/password-special-ch
 Escaping special characters: https://javascript.info/regexp-escaping
 parseInt(): https://www.w3schools.com/jsref/jsref_parseint.asp
 UTF characters: https://www.w3schools.com/charsets/ref_utf_basic_latin.asp
+isNaN() function: https://www.w3schools.com/jsref/jsref_isnan.asp
 
 **Live webpage link:**
 
