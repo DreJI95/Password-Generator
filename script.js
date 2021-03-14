@@ -40,17 +40,21 @@ var passwordCriteria =
   passSpecialChar: ["special characters",false]
 }
 
-// Requests the user to specify their password criteria
+// Requests the user to specify their password criteria---------
 var validateSelectedCriteria = function (passCriteriaText)
 {
   var yOrN = window.prompt("Does your password have " + passCriteriaText + "? Enter 'y'/ yes or 'n'/ no.");
 
     //Ensures the user inputs a not-null value
     if (!yOrN){
-      if(window.confirm("Do you wish to cancel?"))
+      if(window.confirm("Do you wish to skip?"))
       {
         return false;
-      };
+      }
+      else {
+        passCriteriaText = false;
+        validateSelectedCriteria(passCriteriaText);
+      }
     }
 
     //conditions to ensure the user enters a yes or no option for the password criteria
@@ -64,18 +68,24 @@ var validateSelectedCriteria = function (passCriteriaText)
       }
       else{
           window.alert("You have not selected a yes or no response!");
-          if(window.confirm("Do you wish to cancel?"))
+          if(window.confirm("Do you wish to skip?"))
           {
             return false;
           }
+          else {
+            passCriteriaText = false;
+            validateSelectedCriteria(passCriteriaText);
+          }
       }
     }
-
-    validateSelectedCriteria(passCriteriaText);
+    return false;
 }
 
-//Calls method to ask user for password criter. Validates that one or more criteria values are true.
+//Calls method to ask user for password criter. 
 var validatePasswordCriteria = function() {
+
+  var criteriaNum = Number;
+
   passwordCriteria.passLowerCase[1] = validateSelectedCriteria(passwordCriteria.passLowerCase[0]);
   console.log(passwordCriteria.passLowerCase);
 
@@ -88,17 +98,37 @@ var validatePasswordCriteria = function() {
   passwordCriteria.passSpecialChar[1] = validateSelectedCriteria(passwordCriteria.passSpecialChar[0]);
   console.log(passwordCriteria.passSpecialChar);
 
+    //Validates that one or more criteria values are true.
+  if (passwordCriteria.passLowerCase[1] === false && 
+    passwordCriteria.passUpperCase[1] === false && 
+    passwordCriteria.passNumericChar[1] === false && 
+    passwordCriteria.passSpecialChar[1] === false)
+  {
+    window.alert("You have no responses for all password criteria!");
+    if(window.confirm("Do you wish to cancel?"))
+    {
+      return 0;
+    }
+      validatePasswordCriteria();
+  }
 }
 
 //Used to generate user password based on length and password criteria specificed.
-var passwordCharacterGenerator = function (){
-
+var passwordCharacterGenerator = function (lengthOfPassword){
+  console.log(lengthOfPassword);
 }
 
 var generatePassword = function (){
   window.alert("Password Criteria: \n 1) Length with range of 8 to 128 characters \n 2) Lowercase \n 3) Uppercase \n 4) Numeric \n 5) Special characters ");
-  console.log(passwordLength());
-  validatePasswordCriteria();
+  var passwordLengthCompleted = passwordLength();
+
+  if (passwordLengthCompleted > 0) {
+    if (validatePasswordCriteria() !== 0)
+    {
+    passwordCharacterGenerator(passwordLengthCompleted);
+    }  
+  }
+
 }
 
 // Get references to the #generate element
