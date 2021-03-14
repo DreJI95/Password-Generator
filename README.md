@@ -29,6 +29,8 @@ This application will allow an employee generate a random password based on thei
 **References:** 
 Password cpecial characters: https://owasp.org/www-community/password-special-characters
 Escaping special characters: https://javascript.info/regexp-escaping
+parseInt(): https://www.w3schools.com/jsref/jsref_parseint.asp
+UTF characters: https://www.w3schools.com/charsets/ref_utf_basic_latin.asp
 
 **Live webpage link:**
 
