@@ -1,10 +1,15 @@
+  // console.log(lengthOfPassword);
+  // console.log(passwordCriteria);
+  // console.log(passwordRules);
+  console.log(upperCaseCharacter());
+
+
 // Assignment code here
-var userEntryLength;
 
 //Request user to enter a password length
 var passwordLength = function()
 {
-  userEntryOfLength = window.prompt("Enter a number for the password length between 8 and 128 characters");
+  var userEntryOfLength = window.prompt("Enter a number for the password length between 8 and 128 characters");
 
   //Ensures that a value is entered
  while (!userEntryOfLength){
@@ -115,20 +120,74 @@ var validatePasswordCriteria = function() {
 
 //Used to generate user password based on length and password criteria specificed.
 var passwordCharacterGenerator = function (lengthOfPassword){
+
+  var passwordCharacters = [];
+  var passwordRules = [passwordCriteria.passLowerCase[1],passwordCriteria.passUpperCase[1],passwordCriteria.passNumericChar[1],passwordCriteria.passSpecialChar[1]];
+
+  var alphaCharacter = function ()
+  {
+    var arrayOfAlphaCharacters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+
+    return arrayOfAlphaCharacters[Math.max(0,Math.floor(arrayOfAlphaCharacters.length * (Math.random()*1))-1)];
+  }
+
+  var numericCharacter = function ()
+  {
+    return (Math.min(0,Math.floor(9 * Math.random())-1));
+  }
+
+  var specialCharacters = function ()
+  {
+    var arrayOfSpecialCharacters = ['!','"','#','$','%','&','\'','(',')','*','+',',','-','.',':',';','=','<','>','?','[',']','^','_','`','{','}','|','~'];
+
+    return arrayOfSpecialCharacters[Math.max(0,Math.floor(arrayOfSpecialCharacters.length * Math.random())-1)];
+  }
+
+  for (var x = 0; x <= lengthOfPassword; x++)
+  {
+    var y = (3*Math.random());
+    while (passwordRules[y] === false)
+    {
+      y *= (3*Math.random());
+    }
+
+    if (y === 0)
+    {
+    passwordCharacters[x] = arrayOfAlphaCharacters.toLowerCase();
+    }
+    else if (y === 1)
+    {
+      passwordCharacters[x] = arrayOfAlphaCharacters.toUpperCase();
+    }
+    else if (y === 2)
+    {
+      passwordCharacters[x] = numericCharacter();
+    }
+    else
+    {
+      passwordCharacters[x] = specialCharacters();
+    }
+  }
+
   console.log(lengthOfPassword);
+  console.log(passwordCriteria);
+  console.log(passwordRules);
+  console.log(passwordCharacters);
 }
 
 var generatePassword = function (){
   window.alert("Password Criteria: \n 1) Length with range of 8 to 128 characters \n 2) Lowercase \n 3) Uppercase \n 4) Numeric \n 5) Special characters ");
   var passwordLengthCompleted = passwordLength();
 
+    // Conditions in place if user decides to skip or if their password meets none of the criteria rules
   if (passwordLengthCompleted > 0) {
     if (validatePasswordCriteria() !== 0)
     {
     passwordCharacterGenerator(passwordLengthCompleted);
     }  
   }
-
+  // Returns value of blank and maintains data integrity by removing any previous entries if user decides to skip.
+  return " ";
 }
 
 // Get references to the #generate element
