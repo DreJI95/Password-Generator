@@ -38,8 +38,12 @@ toString method: https://www.w3schools.com/jsref/jsref_tostring_array.asp
 join() property - used to convert arrays into string: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
 includes() function: https://www.w3schools.com/jsref/jsref_includes_array.asp
 
-**Live webpage link:**
+**Live webpage link:** https://dreji95.github.io/Password-Generator/
+
 
 **Repository link:** https://github.com/DreJI95/Password-Generator
 
 ![PasswordGenerator-pseudo-code-diagram](https://user-images.githubusercontent.com/76451565/111092057-58730700-850b-11eb-9ad5-e4d087e44e03.png)
+![PasswordGenerator-screenshot1](https://user-images.githubusercontent.com/76451565/111092180-b69fea00-850b-11eb-930d-c7b485087a38.PNG)
+![PasswordGenerator-screenshot2](https://user-images.githubusercontent.com/76451565/111092199-c4556f80-850b-11eb-8a71-b36a7350a3d9.PNG)
+
