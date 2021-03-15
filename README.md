@@ -41,3 +41,5 @@ includes() function: https://www.w3schools.com/jsref/jsref_includes_array.asp
 **Live webpage link:**
 
 **Repository link:** https://github.com/DreJI95/Password-Generator
+
+![PasswordGenerator-pseudo-code-diagram](https://user-images.githubusercontent.com/76451565/111092057-58730700-850b-11eb-9ad5-e4d087e44e03.png)
