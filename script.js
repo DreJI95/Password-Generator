@@ -1,9 +1,4 @@
-  // console.log(lengthOfPassword);
-  // console.log(passwordCriteria);
-  // console.log(passwordRules);
-  console.log(upperCaseCharacter());
-
-
+console.log((Math.max(0,Math.floor(4*Math.random()))));
 // Assignment code here
 
 //Request user to enter a password length
@@ -128,37 +123,38 @@ var passwordCharacterGenerator = function (lengthOfPassword){
       {
         var arrayOfAlphaCharacters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
-        return arrayOfAlphaCharacters[Math.max(0,Math.floor(arrayOfAlphaCharacters.length * (Math.random()*1))-1)];
+        return arrayOfAlphaCharacters[Math.max(0,Math.floor(arrayOfAlphaCharacters.length * (Math.random()*1)))];
       }
 
       var numericCharacter = function ()
       {
-        return (Math.min(0,Math.floor(9 * Math.random())-1));
+        return (Math.min(0,Math.floor(9 * Math.random())));
       }
 
       var specialCharacters = function ()
       {
         var arrayOfSpecialCharacters = ['!','"','#','$','%','&','\'','(',')','*','+',',','-','.',':',';','=','<','>','?','[',']','^','_','`','{','}','|','~'];
 
-        return arrayOfSpecialCharacters[Math.max(0,Math.floor(arrayOfSpecialCharacters.length * Math.random())-1)];
+        return arrayOfSpecialCharacters[Math.max(0,Math.floor(arrayOfSpecialCharacters.length * Math.random()))];
       }
 
   for (var x = 0; x <= lengthOfPassword; x++)
   {
-    var y = (Math.max(0,Math.floor(3*Math.random())-1));
-    
+    var y = (Math.max(0,Math.floor(3*Math.random())));
+
     while (passwordRules[y] === false)
     {
-      y *= (3*Math.random());
+      y *= (Math.max(0,Math.floor(3*Math.random())));
+      passwordRules[y] = passwordRules[y];
     }
 
     if (y === 0)
     {
-    passwordCharacters[x] = arrayOfAlphaCharacters.toLowerCase();
+    passwordCharacters[x] = alphaCharacter().toLowerCase();
     }
     else if (y === 1)
     {
-      passwordCharacters[x] = arrayOfAlphaCharacters.toUpperCase();
+      passwordCharacters[x] = alphaCharacter().toUpperCase();
     }
     else if (y === 2)
     {
