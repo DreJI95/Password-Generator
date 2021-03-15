@@ -1,4 +1,3 @@
-console.log((Math.max(0,Math.floor(4*Math.random()))));
 // Assignment code here
 
 //Request user to enter a password length
@@ -87,16 +86,12 @@ var validatePasswordCriteria = function() {
   var criteriaNum = Number;
 
   passwordCriteria.passLowerCase[1] = validateSelectedCriteria(passwordCriteria.passLowerCase[0]);
-  console.log(passwordCriteria.passLowerCase);
 
   passwordCriteria.passUpperCase[1] = validateSelectedCriteria(passwordCriteria.passUpperCase[0]);
-  console.log(passwordCriteria.passUpperCase);
 
   passwordCriteria.passNumericChar[1] = validateSelectedCriteria(passwordCriteria.passNumericChar[0]);
-  console.log(passwordCriteria.passNumericChar);
 
   passwordCriteria.passSpecialChar[1] = validateSelectedCriteria(passwordCriteria.passSpecialChar[0]);
-  console.log(passwordCriteria.passSpecialChar);
 
     //Validates that one or more criteria values are true.
   if (passwordCriteria.passLowerCase[1] === false && 
@@ -115,22 +110,26 @@ var validatePasswordCriteria = function() {
 
 //Used to generate user password based on length and password criteria specificed.
 var passwordCharacterGenerator = function (lengthOfPassword){
-
+  debugger;
   var passwordCharacters = [];
   var passwordRules = [passwordCriteria.passLowerCase[1],passwordCriteria.passUpperCase[1],passwordCriteria.passNumericChar[1],passwordCriteria.passSpecialChar[1]];
+  var passwordCompleted = "";
 
+      //Generates random alphabet character from an array
       var alphaCharacter = function ()
       {
         var arrayOfAlphaCharacters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 
-        return arrayOfAlphaCharacters[Math.max(0,Math.floor(arrayOfAlphaCharacters.length * (Math.random()*1)))];
+        return arrayOfAlphaCharacters[Math.max(0,Math.floor(arrayOfAlphaCharacters.length * (Math.random())))];
       }
 
+      //Generates random number from an array
       var numericCharacter = function ()
       {
-        return (Math.min(0,Math.floor(9 * Math.random())));
+        return ((Math.max(0,Math.floor(9*Math.random()))));
       }
 
+      //Generates random special characters from an array
       var specialCharacters = function ()
       {
         var arrayOfSpecialCharacters = ['!','"','#','$','%','&','\'','(',')','*','+',',','-','.',':',';','=','<','>','?','[',']','^','_','`','{','}','|','~'];
@@ -138,39 +137,46 @@ var passwordCharacterGenerator = function (lengthOfPassword){
         return arrayOfSpecialCharacters[Math.max(0,Math.floor(arrayOfSpecialCharacters.length * Math.random()))];
       }
 
-  for (var x = 0; x <= lengthOfPassword; x++)
+  //For loop populates password characters based on specified length
+  for (var x = 0; x < lengthOfPassword; x++)
   {
-    var y = (Math.max(0,Math.floor(3*Math.random())));
+    var y = (Math.max(0,Math.floor(4*Math.random())));
 
+    //while loop checks the password criteria specified by the user
     while (passwordRules[y] === false)
     {
-      y *= (Math.max(0,Math.floor(3*Math.random())));
+      console.log(" y before" + passwordRules[y]);
+      y = (Math.max(0,Math.floor(4*Math.random())));
       passwordRules[y] = passwordRules[y];
+      console.log("y after" + passwordRules[y]);
     }
 
-    if (y === 0)
+    console.log("before assignment y:" + y);
+    if (y === 0) //condition if lower case characters are included
     {
     passwordCharacters[x] = alphaCharacter().toLowerCase();
     }
-    else if (y === 1)
+    else if (y === 1) //condition if upper case characters are included
     {
       passwordCharacters[x] = alphaCharacter().toUpperCase();
     }
-    else if (y === 2)
+    else if (y === 2) //condition if numeric characters are included
     {
-      passwordCharacters[x] = numericCharacter();
+      passwordCharacters[x] = numericCharacter().toString();
     }
-    else
+    else //condition if special characters are included
     {
       passwordCharacters[x] = specialCharacters();
     }
   }
 
-  console.log(lengthOfPassword);
-  console.log(passwordCriteria);
-  console.log(passwordRules);
-  console.log(passwordCharacters);
-  return passwordCharacters;
+  for (var z = 0; z < lengthOfPassword; z ++)
+  {
+    passwordCompleted.concat(passwordCharacters[z].toString());
+    console.log("password completed:" + passwordCompleted);
+  }
+
+  return passwordCompleted;
 }
 
 var generatePassword = function (){
@@ -181,7 +187,7 @@ var generatePassword = function (){
   if (passwordLengthCompleted > 0) {
     if (validatePasswordCriteria() !== 0)
     {
-    passwordCharacterGenerator(passwordLengthCompleted);
+    return passwordCharacterGenerator(passwordLengthCompleted);
     }  
   }
   // Returns value of blank and maintains data integrity by removing any previous entries if user decides to skip.

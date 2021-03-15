@@ -34,6 +34,7 @@ UTF characters: https://www.w3schools.com/charsets/ref_utf_basic_latin.asp
 isNaN() function: https://www.w3schools.com/jsref/jsref_isnan.asp
 Math.max() function: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
 Math.floor() function: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
+toString method: https://www.w3schools.com/jsref/jsref_tostring_array.asp
 
 **Live webpage link:**
 
