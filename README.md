@@ -35,6 +35,8 @@ isNaN() function: https://www.w3schools.com/jsref/jsref_isnan.asp
 Math.max() function: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/max
 Math.floor() function: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/floor
 toString method: https://www.w3schools.com/jsref/jsref_tostring_array.asp
+join() property - used to convert arrays into string: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
+includes() function: https://www.w3schools.com/jsref/jsref_includes_array.asp
 
 **Live webpage link:**
 

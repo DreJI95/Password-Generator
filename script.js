@@ -31,6 +31,7 @@ var passwordLength = function()
     return Math.floor(lengthNum);
 }
 
+
 var passwordCriteria =
 {
   passLowerCase: ["lower case characters",false], 
@@ -38,6 +39,7 @@ var passwordCriteria =
   passNumericChar: ["numeric characters",false], 
   passSpecialChar: ["special characters",false]
 }
+
 
 // Requests the user to specify their password criteria---------
 var validateSelectedCriteria = function (passCriteriaText)
@@ -80,6 +82,7 @@ var validateSelectedCriteria = function (passCriteriaText)
     return false;
 }
 
+
 //Calls method to ask user for password criter. 
 var validatePasswordCriteria = function() {
 
@@ -108,30 +111,31 @@ var validatePasswordCriteria = function() {
   }
 }
 
+
 //Used to generate user password based on length and password criteria specificed.
 var passwordCharacterGenerator = function (lengthOfPassword){
   var passwordCharacters = [];
   var passwordRules = [passwordCriteria.passLowerCase[1],passwordCriteria.passUpperCase[1],passwordCriteria.passNumericChar[1],passwordCriteria.passSpecialChar[1]];
+  var arrayOfNumericCharacters = ['0','1','2','3','4','5','6','7','8','9'];
+  var arrayOfAlphaCharacters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+  var arrayOfUpperCaseAlphaCharacters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+  var arrayOfSpecialCharacters = ['!','"','#','$','%','&','\'','(',')','*','+',',','-','.',':',';','=','<','>','?','[',']','^','_','`','{','}','|','~'];
 
       //Generates random alphabet character from an array
       var alphaCharacter = function ()
       {
-        var arrayOfAlphaCharacters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
-
         return arrayOfAlphaCharacters[Math.max(0,Math.floor(arrayOfAlphaCharacters.length * (Math.random())))];
       }
 
       //Generates random number from an array
       var numericCharacter = function ()
       {
-        return ((Math.max(0,Math.floor(10*Math.random()))));
+        return arrayOfNumericCharacters[Math.max(0,Math.floor(arrayOfNumericCharacters.length * (Math.random())))];
       }
 
       //Generates random special characters from an array
       var specialCharacters = function ()
       {
-        var arrayOfSpecialCharacters = ['!','"','#','$','%','&','\'','(',')','*','+',',','-','.',':',';','=','<','>','?','[',']','^','_','`','{','}','|','~'];
-
         return arrayOfSpecialCharacters[Math.max(0,Math.floor(arrayOfSpecialCharacters.length * Math.random()))];
       }
 
@@ -157,7 +161,7 @@ var passwordCharacterGenerator = function (lengthOfPassword){
     }
     else if (y === 2) //condition if numeric characters are included
     {
-      passwordCharacters[x] = numericCharacter().toString();
+      passwordCharacters[x] = numericCharacter();
     }
     else //condition if special characters are included
     {
@@ -165,8 +169,33 @@ var passwordCharacterGenerator = function (lengthOfPassword){
     }
   }
 
+  //Checks that password matches selected criteria
+  for (var z = 0; z < 4; z++)
+  {
+    if (passwordRules[0] === true) //condition if lower case characters are included
+    {
+      passwordCharacters.includes(arrayOfAlphaCharacters);
+    }
+    else if (passwordRules[1] === true) //condition if upper case characters are included
+    {
+      passwordCharacters.includes(arrayOfUpperCaseAlphaCharacters);
+    }
+    else if (passwordRules[2] === true) //condition if numeric characters are included
+    {
+      passwordCharacters.includes(arrayOfNumericCharacters);
+    }
+    else if (passwordRules[3] === true) //condition if special characters are included
+    {
+      passwordCharacters.includes(arrayOfSpecialCharacters);
+    }
+    else{
+      passwordCharacterGenerator(lengthOfPassword);
+    }
+  }
+
   return passwordCharacters.join('');
 }
+
 
 var generatePassword = function (){
   window.alert("Password Criteria: \n 1) Length with range of 8 to 128 characters \n 2) Lowercase \n 3) Uppercase \n 4) Numeric \n 5) Special characters ");
