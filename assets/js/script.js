@@ -3,32 +3,18 @@
 //Request user to enter a password length
 var passwordLength = function()
 {
-  var userEntryOfLength = window.prompt("Enter a number for the password length between 8 and 128 characters");
+  var userEntryOfLength = window.prompt("Please select a numeric value between 8 and 128");
 
   //Ensures that a value is entered
- while (!userEntryOfLength){
-  window.alert("You have not entered a value, Please select a numeric value between 8 and 128");
-    if(window.confirm("Do you wish to cancel?"))
-    {
+  while (!userEntryOfLength || isNaN(parseInt(userEntryOfLength)) === true || parseInt(userEntryOfLength) < 8 || parseInt(userEntryOfLength) > 128){
+    window.alert("You have not entered a correct value. Please try again.")
+      {
       return 0;
-    };
-    passwordLength();
+      }
   }
 
-    //Ensures the user entry is a numeric value
-  lengthNum = parseInt(userEntryOfLength);
-
-  while (isNaN(lengthNum) === true || lengthNum < 8 || lengthNum > 128){
-    window.alert("You have not entered a numeric value between 8 and 128");
-      if(window.confirm("Do you wish to cancel?"))
-      {
-        return 0;
-      };
-      passwordLength();
-    }
-
-      //Handles decimal values and rounds the password length to the lower whole number
-    return Math.floor(lengthNum);
+  //Handles decimal values and rounds the password length to the lower whole number
+  return Math.floor(parseInt(userEntryOfLength));
 }
 
 
